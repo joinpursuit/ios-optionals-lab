@@ -9,12 +9,18 @@ a. Given the variable `userNameOne` below, print *"The username is Test User"*. 
 
 ```swift
 var userNameOne: String? = "Test User"
+```swift
+if let userNameOne = "Test User" {
+print(userNameOne)
+}
 ```
 
 b. Given the variable `userNameTwo` below, print *"The username is undefined"*.  Use the *nil coalescing operator* (`??`).
 
 ```swift
 var userNameTwo: String? = nil
+```swift
+print("The username is \(userNameTwo ?? "undefined")")
 ```
 
 ## Question 2
@@ -25,12 +31,32 @@ a. Given the variables `rectOneWidth` and `rectOneHeight` below, print "The area
 var rectOneWidth: Double? = 5
 var rectOneHeight: Double? = 10
 ```
+```swift
+if let rectWidth = rectOneWidth {
+    if let rectHeight = rectOneHeight {
+        let rectArea = rectWidth * rectHeight
+        print("The area of rectOne is \(rectArea)")
+    }
+}
+```
 
 b. Given the variables `rectTwoWidth` and `rectTwoHeight` below, print "The are of rectTwo is not able to be calculated".  Use *Optional Binding* (`if let`) to print this message.
 
 ```swift
 var rectTwoWidth: Double? = nil
 var rectTwoHeight: Double? = nil
+```
+```swift
+if let rectWidth = rectTwoWidth {
+    if let rectHeight = rectTwoHeight {
+        let rectArea = rectHeight * rectWidth
+        print("rectTwo area is \(rectArea)")
+    } else {
+        print("The are of rectTwo is not able to be calculated")
+    }
+} else {
+    print("The are of rectTwo is not able to be calculated")
+}
 ```
 
 ## Question 3
@@ -43,6 +69,16 @@ var userOneName: String? = "Anne"
 var userOneAge: Int? = 15
 var userOneHeight: Double? = 70
 ```
+```swift
+if let userName = userOneName {
+    if let userAge = userOneAge {
+        if let userHeight = userOneHeight {
+            let userHeight = round(10 * (userHeight/12.0)) / 10
+            print("Hello \(userName)!  You are \(userAge) years old and \(userHeight) feet tall")
+        }
+    }
+}
+```
 
 b. Given the variables `userTwoName`, `userTwoAge` and `userTwoHeight` below, write code that prints "Hello user!  You are 15 years old and I don't know how tall you are".  Use optional binding
 
@@ -51,7 +87,18 @@ var userTwoName: String? = nil
 var userTwoAge: Int? = 15
 var userTwoHeight: Double? = nil
 ```
-
+```swift
+    if let userAge = userTwoAge {
+        if let userHeight = userTwoHeight {
+            if let userName = userTwoName {
+            let userHeight = round(10 * (userHeight/12.0)) / 10
+            print("Hello \(userName)!  You are \(userAge) years old and \(userHeight) feet tall")
+        }
+        } else {
+            print(" Hello user!  You are 15 years old and I don't know how tall you are")
+    }
+}
+```
 
 ## Question 4
 
@@ -62,7 +109,14 @@ Give the variable `favoriteNumber`, write code that either prints "Your favorite
 ```swift
 var favoriteNumber = Bool.random() ? Int.random(in: 0...10) : nil
 ```
+```swift
+if let number = favoriteNumber {
+    print("Your favorite number is \(number)")
+} else {
+    print("I don't know what your favorite number is")
+}
 
+```
 
 
 ## Question 5
@@ -73,6 +127,13 @@ Given the variables `numOne`, `numTwo` and `numThree`, write code that prints "T
 var numOne = Bool.random() ? Int.random(in: 0...10) : nil
 var numTwo = Bool.random() ? Int.random(in: 0...10) : nil
 var numThree = Bool.random() ? Int.random(in: 0...10) : nil
+```
+```swift
+var sum = 0
+sum += numOne ?? 0
+sum += numTwo ?? 0
+sum += numThree ?? 0
+print("The sum of all the numbers is \(sum)")
 ```
 
 ## Question 6
@@ -86,8 +147,33 @@ for _ in 0..<10 {
     numbers.append(Bool.random() ? Int.random(in: 0...100) : nil)
 }
 ```
+```swift
+var sum = 0
+for each in numbers {
+    if each != nil {
+        sum += each!
+    }
+}
+print("The sum of all the numbers is \(sum)")
+```
 
 b. Using the same variable, find the average of all non-nil values.
+```swift
+func averageOfAll(_: [Int?]) -> Int? {
+var nilCount = 0
+var sum = 0
+for each in numbers {
+    if each != nil {
+        sum += each!
+    } else {
+        nilCount += 1
+    }
+}
+    let average = sum / (numbers.count - nilCount)
+    return average
+}
+print("The average of numbers is: \(averageOfAll(numbers)!)")
+```
 
 ## Extra Questions
 
