@@ -10,11 +10,23 @@ a. Given the variable `userNameOne` below, print *"The username is Test User"*. 
 ```swift
 var userNameOne: String? = "Test User"
 ```
+answer:
+```swift
+var userNameOne: String? = "Test User"
+if let user = userNameOne {
+    print("The username is \(user).")
+}
+```
 
 b. Given the variable `userNameTwo` below, print *"The username is undefined"*.  Use the *nil coalescing operator* (`??`).
 
 ```swift
 var userNameTwo: String? = nil
+```
+answer
+```swift
+var userNameTwo: String? = nil
+print(userNameTwo ?? "The username is undefined")
 ```
 
 ## Question 2
@@ -25,12 +37,38 @@ a. Given the variables `rectOneWidth` and `rectOneHeight` below, print "The area
 var rectOneWidth: Double? = 5
 var rectOneHeight: Double? = 10
 ```
+answer:
+```swift
+if let width = rectOneWidth {
+    if let height = rectOneHeight {
+        print("The area of rectOne is \(Int(width * height))")
+    }
+}
+```
+OR
+```swift
+if let width = rectOneWidth, let height = rectOneHeight {
+    print("The area of rectOne is \(Int(width * height))")
+}
+```
 
 b. Given the variables `rectTwoWidth` and `rectTwoHeight` below, print "The are of rectTwo is not able to be calculated".  Use *Optional Binding* (`if let`) to print this message.
 
 ```swift
 var rectTwoWidth: Double? = nil
 var rectTwoHeight: Double? = nil
+```
+answer:
+```swift
+var rectTwoWidth : Double? = nil
+var rectTwoHeight : Double? = nil
+
+
+if let width = rectTwoWidth, let height = rectTwoHeight {
+    print("The area of rectTwo is \(Int(width * height))")
+} else {
+    print("The area of rectTwo is not able to be calculated.")
+}
 ```
 
 ## Question 3
@@ -43,6 +81,16 @@ var userOneName: String? = "Anne"
 var userOneAge: Int? = 15
 var userOneHeight: Double? = 70
 ```
+answer:
+```swift
+var userOneName: String? = "Anne"
+var userOneAge: Int? = 15
+var userOneHeight: Double? = 70
+
+if let name = userOneName, let age = userOneAge, let height = userOneHeight {
+    print("Hello \(name)! You are \(age) years old and \(String(format: "%.1f", height / 12)) feet tall.")
+}
+```
 
 b. Given the variables `userTwoName`, `userTwoAge` and `userTwoHeight` below, write code that prints "Hello user!  You are 15 years old and I don't know how tall you are".  Use optional binding
 
@@ -51,7 +99,22 @@ var userTwoName: String? = nil
 var userTwoAge: Int? = 15
 var userTwoHeight: Double? = nil
 ```
+answer:
+```swift
+var userTwoName: String? = nil
+var userTwoAge: Int? = 15
+var userTwoHeight: Double? = nil
 
+if userTwoName != nil {
+} else {
+    if let age = userTwoAge {
+        if userTwoHeight != nil {
+        } else {
+            print("Hello user you are \(age) and I don't know how tall you are.")
+        }
+    }
+}
+```
 
 ## Question 4
 
@@ -62,7 +125,15 @@ Give the variable `favoriteNumber`, write code that either prints "Your favorite
 ```swift
 var favoriteNumber = Bool.random() ? Int.random(in: 0...10) : nil
 ```
-
+answer:
+```swift
+var favoriteNumber = Bool.random() ? Int.random(in: 0...10) : nil
+if let number = favoriteNumber {
+    print("Your favorite number is \(number)")
+} else {
+    print("I don't know what your favorite number is.")
+}
+```
 
 
 ## Question 5
@@ -73,6 +144,24 @@ Given the variables `numOne`, `numTwo` and `numThree`, write code that prints "T
 var numOne = Bool.random() ? Int.random(in: 0...10) : nil
 var numTwo = Bool.random() ? Int.random(in: 0...10) : nil
 var numThree = Bool.random() ? Int.random(in: 0...10) : nil
+```
+answer:
+```swift
+var numOne = Bool.random() ? Int.random(in: 0...10) : nil
+var numTwo = Bool.random() ? Int.random(in: 0...10) : nil
+var numThree = Bool.random() ? Int.random(in: 0...10) : nil
+var sum : Int = 0
+
+if let one = numOne {
+    sum += one
+}
+if let two = numTwo {
+    sum += two
+}
+if let three = numThree {
+    sum += three
+}
+print("The sum of all the numbers is \(sum)")
 ```
 
 ## Question 6
@@ -86,8 +175,41 @@ for _ in 0..<10 {
     numbers.append(Bool.random() ? Int.random(in: 0...100) : nil)
 }
 ```
+answer:
+```swift
+var numbers = [Int?]()
+for _ in 0..<10 {
+    numbers.append(Bool.random() ? Int.random(in: 0...100) : nil)
+}
+var sum = 0
+
+print(numbers)
+for number in numbers {
+    if let _ = number {
+        sum += number!
+    }
+}
+print("The sum of all the numbers is \(sum)")
+```
 
 b. Using the same variable, find the average of all non-nil values.
+answer:
+```swift
+var numbers = [Int?]()
+for _ in 0..<10 {
+    numbers.append(Bool.random() ? Int.random(in: 0...100) : nil)
+}
+var sum = 0
+var count = 0
+print(numbers)
+for number in numbers {
+    if let _ = number {
+        sum += number!
+        count += 1
+    }
+}
+print("The average of all non-nil values are \(sum/count)")
+```
 
 ## Extra Questions
 
