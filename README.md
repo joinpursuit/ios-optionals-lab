@@ -9,12 +9,17 @@ a. Given the variable `userNameOne` below, print *"The username is Test User"*. 
 
 ```swift
 var userNameOne: String? = "Test User"
+if let userName = userNameOne   {
+    print("The username is \(userName)")
+}
 ```
 
 b. Given the variable `userNameTwo` below, print *"The username is undefined"*.  Use the *nil coalescing operator* (`??`).
 
 ```swift
 var userNameTwo: String? = nil
+let userName2 = userNameTwo ?? "undefined"
+print("The username is \(userName2)")
 ```
 
 ## Question 2
@@ -24,6 +29,11 @@ a. Given the variables `rectOneWidth` and `rectOneHeight` below, print "The area
 ```swift
 var rectOneWidth: Double? = 5
 var rectOneHeight: Double? = 10
+
+if let width = rectOneWidth, let height = rectOneHeight  {
+    let area = Int(width * height)
+    print("The area of rectOne is \(area)")
+}
 ```
 
 b. Given the variables `rectTwoWidth` and `rectTwoHeight` below, print "The are of rectTwo is not able to be calculated".  Use *Optional Binding* (`if let`) to print this message.
@@ -31,6 +41,14 @@ b. Given the variables `rectTwoWidth` and `rectTwoHeight` below, print "The are 
 ```swift
 var rectTwoWidth: Double? = nil
 var rectTwoHeight: Double? = nil
+
+if let width = rectTwoWidth, let height = rectTwoHeight  {
+    let area = Int(width * height)
+    print("The area of rectOne is \(area)")
+}
+else    {
+    print("rectTwo is not able to be calculated")
+}
 ```
 
 ## Question 3
@@ -42,6 +60,11 @@ a. Given the variables `userOneName`, `userOneAge`, and `userOneHeight` below, w
 var userOneName: String? = "Anne"
 var userOneAge: Int? = 15
 var userOneHeight: Double? = 70
+
+if let name = userOneName, let age = userOneAge, let heightInches = userOneHeight {
+    let heightFt = (Double(heightInches*10)/12.0).rounded()/10
+    print("Hello \(name)! You are \(age) years old and \(heightFt).")
+}
 ```
 
 b. Given the variables `userTwoName`, `userTwoAge` and `userTwoHeight` below, write code that prints "Hello user!  You are 15 years old and I don't know how tall you are".  Use optional binding
@@ -50,6 +73,15 @@ b. Given the variables `userTwoName`, `userTwoAge` and `userTwoHeight` below, wr
 var userTwoName: String? = nil
 var userTwoAge: Int? = 15
 var userTwoHeight: Double? = nil
+
+if let name = userTwoName, let age = userTwoAge, let heightInches = userTwoHeight {
+    let heightFt = (Double(heightInches*10)/12.0).rounded()/10
+    print("Hello \(name)! You are \(age) years old and \(heightFt).")
+}
+
+else if let age = userTwoAge    {
+    print("Hello user! You are \(age) years old and I don't know how tall you are")
+}
 ```
 
 
@@ -61,6 +93,13 @@ Give the variable `favoriteNumber`, write code that either prints "Your favorite
 
 ```swift
 var favoriteNumber = Bool.random() ? Int.random(in: 0...10) : nil
+
+if let favNum = favoriteNumber  {
+    print("Your favorite number is \(favNum).")
+}
+else if {
+    print("I don't know what your favorite number is")
+}
 ```
 
 
@@ -73,6 +112,9 @@ Given the variables `numOne`, `numTwo` and `numThree`, write code that prints "T
 var numOne = Bool.random() ? Int.random(in: 0...10) : nil
 var numTwo = Bool.random() ? Int.random(in: 0...10) : nil
 var numThree = Bool.random() ? Int.random(in: 0...10) : nil
+
+let sum = (numOne ?? 0) + (numTwo ?? 0) + (numThree ?? 0)
+print("The sum of all the numbers is \(sum)")
 ```
 
 ## Question 6
@@ -82,12 +124,34 @@ a. Given the variable `numbers` below, write code that prints "The sum of all th
 ```swift
 var numbers = [Int?]()
 
-for _ in 0..<10 {
+var sum = 0
+for num in 0..<10 {
     numbers.append(Bool.random() ? Int.random(in: 0...100) : nil)
+    sum += numbers[num] ?? 0
 }
+
+print("The sum of all the number is \(sum)")
+
 ```
 
 b. Using the same variable, find the average of all non-nil values.
+
+var numbers = [Int?]()
+var average = 0.0
+var count = 0.0
+var sum = 0.0
+
+for num in 0..<10 {
+    numbers.append(Bool.random() ? Int.random(in: 0...100) : nil)
+    if let noneZero = numbers[num]  {
+        sum += Double(noneZero)
+        count+=1
+    }
+}
+average = sum/count
+print("The sum of all the number is \(sum)")
+print("count is \(count)")
+print("Average is \(average)")
 
 ## Extra Questions
 
