@@ -160,6 +160,24 @@ for _ in 0..<10 {
 
 b. Using the same variable, find the average of all non-nil values.
 
+```
+var numbers = [Int?]()
+var sum = 0
+var count = 0
+for _ in 0..<10 {
+    numbers.append(Bool.random() ? Int.random(in: 0...100) : nil)
+    for num in numbers {
+            sum += num ?? 0
+        if num != nil {
+            count += 1
+            }
+        }
+    }
+print("The average is \(sum / count)")
+
+```
+
+
 ## Extra Questions
 
 https://github.com/joinpursuit/Pursuit-Core-iOS-Extra-Optionals-Questions/blob/master/README.md
