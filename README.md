@@ -6,15 +6,21 @@ Fork and clone this repo. On your fork, answer and commit the follow questions. 
 ## Question 1
 
 a. Given the variable `userNameOne` below, print *"The username is Test User"*.  Use *Optional Binding* (`if let`) to print the name.
-
 ```swift
 var userNameOne: String? = "Test User"
+
+if let testUserName = userNameOne {
+    print("The username is \(testUserName).")
+}
+
 ```
 
 b. Given the variable `userNameTwo` below, print *"The username is undefined"*.  Use the *nil coalescing operator* (`??`).
 
 ```swift
 var userNameTwo: String? = nil
+print("The username is \(userNameTwo ?? "undefined.")")
+
 ```
 
 ## Question 2
