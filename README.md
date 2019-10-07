@@ -132,10 +132,12 @@ for num in 0..<10 {
 
 print("The sum of all the number is \(sum)")
 
+
 ```
 
 b. Using the same variable, find the average of all non-nil values.
 
+```
 var numbers = [Int?]()
 var average = 0.0
 var count = 0.0
@@ -152,6 +154,8 @@ average = sum/count
 print("The sum of all the number is \(sum)")
 print("count is \(count)")
 print("Average is \(average)")
+
+```
 
 ## Extra Questions
 
