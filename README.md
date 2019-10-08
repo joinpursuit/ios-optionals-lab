@@ -30,6 +30,12 @@ a. Given the variables `rectOneWidth` and `rectOneHeight` below, print "The area
 ```swift
 var rectOneWidth: Double? = 5
 var rectOneHeight: Double? = 10
+
+if let width = rectOneWidth, let height = rectOneHeight {
+    Int(width * height)
+    print("The area of rectOne is \(Int(width * height))")
+ 
+}
 ```
 
 b. Given the variables `rectTwoWidth` and `rectTwoHeight` below, print "The are of rectTwo is not able to be calculated".  Use *Optional Binding* (`if let`) to print this message.
@@ -37,6 +43,11 @@ b. Given the variables `rectTwoWidth` and `rectTwoHeight` below, print "The are 
 ```swift
 var rectTwoWidth: Double? = nil
 var rectTwoHeight: Double? = nil
+
+if let width2 = rectTwoWidth, let height2 = rectTwoHeight {
+Int(width2 * height2)
+}
+print("The area of rectTwo is not able to be calculated")
 ```
 
 ## Question 3
@@ -48,6 +59,12 @@ a. Given the variables `userOneName`, `userOneAge`, and `userOneHeight` below, w
 var userOneName: String? = "Anne"
 var userOneAge: Int? = 15
 var userOneHeight: Double? = 70
+
+
+if let userName = userOneName, let userAge = userOneAge, let userHeight = userOneHeight {
+    print("Hello, \(userName)! You are \(userAge) years old and \(Float(userHeight) / 12) feet tall.")
+}
+
 ```
 
 b. Given the variables `userTwoName`, `userTwoAge` and `userTwoHeight` below, write code that prints "Hello user!  You are 15 years old and I don't know how tall you are".  Use optional binding
@@ -56,6 +73,12 @@ b. Given the variables `userTwoName`, `userTwoAge` and `userTwoHeight` below, wr
 var userTwoName: String? = nil
 var userTwoAge: Int? = 15
 var userTwoHeight: Double? = nil
+
+if let userName2 = userTwoName, let userAge2 = userTwoAge, let userHeight2 = userTwoHeight {
+    
+}
+print("Hello, \(userTwoName ?? "user")! You are \(userTwoAge ?? 21) years old and I don't know how tall you are.")
+
 ```
 
 
@@ -67,6 +90,14 @@ Give the variable `favoriteNumber`, write code that either prints "Your favorite
 
 ```swift
 var favoriteNumber = Bool.random() ? Int.random(in: 0...10) : nil
+
+
+if let yourFavNumber = favoriteNumber {
+    print("Your favorite number is \(yourFavNumber).")
+} else {
+  print("I don't know what your favorite number is.")
+}
+
 ```
 
 
@@ -79,6 +110,17 @@ Given the variables `numOne`, `numTwo` and `numThree`, write code that prints "T
 var numOne = Bool.random() ? Int.random(in: 0...10) : nil
 var numTwo = Bool.random() ? Int.random(in: 0...10) : nil
 var numThree = Bool.random() ? Int.random(in: 0...10) : nil
+
+if let one = numOne {
+    sum += one
+}
+if let two = numTwo {
+    sum += two
+}
+if let three = numThree {
+    sum += three
+}
+print("The sum of all the number is \(sum)")
 ```
 
 ## Question 6
