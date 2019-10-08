@@ -170,12 +170,13 @@ var numbers = [Int?]()
 var sum = 0
 var count = 0
 
-for num in 0..<10 {
+for _ in 0..<10 {
     numbers.append(Bool.random() ? Int.random(in: 0...100) : nil)
-    sum += numbers[num] ?? 0
-    if numbers[num] != nil {
-        count += 1
-    }
+}
+
+for num in numbers where num != nil {
+    sum += num ?? 0
+    count += 1
 }
 
 
