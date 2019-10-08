@@ -166,7 +166,7 @@ for _ in 0..<10 {
     for num in numbers {
     sum += num ?? 0
 }
-    print(sum)
+    print("The sum of all the numbers is \(sum)")
 }
 
 
