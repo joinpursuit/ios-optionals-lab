@@ -158,6 +158,21 @@ for _ in 0..<10 {
 }
 ```
 
+```
+var numbers = [Int?]()
+var sum = 0
+for _ in 0..<10 {
+    numbers.append(Bool.random() ? Int.random(in: 0...100) : nil)
+    for num in numbers {
+    sum += num ?? 0
+}
+    print(sum)
+}
+
+
+
+```
+
 b. Using the same variable, find the average of all non-nil values.
 
 ```
