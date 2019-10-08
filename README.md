@@ -137,8 +137,26 @@ for _ in 0..<10 {
     numbers.append(Bool.random() ? Int.random(in: 0...100) : nil)
 }
 ```
+//
+var sum = 0
+for num in numbers {
+  sum += num ?? 0 
+}
+print("The sum of all the numbers is \(sum)")
 
 b. Using the same variable, find the average of all non-nil values.
+//
+sum = 0 // clearing sum from a.
+var nonNilValueCount = 0
+for num in numbers {
+
+if let unwrappedNum = num {
+       
+nonNilValueCount += 1
+        sum += unwrappedNum
+    }
+}
+print("The average of the \(nonNilValueCount) non-nil values is \(sum / nonNilValueCount)")
 
 ## Extra Questions
 
