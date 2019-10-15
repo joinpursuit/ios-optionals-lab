@@ -8,21 +8,37 @@ Fork and clone this repo. On your fork, answer and commit the follow questions. 
 `var userName: String?`
 
 Write 3 different ways of safely unwrapping and printing the value of `userName`.  If it is nil, print "No name".
-
+```
+swift
 - Method one: Check for nil and force unwrap
+var userName: String? = "Ted"
+var person = String(userName!)
 
 - Method two: Optional binding
+var userName: String?
+if let yourName = userName {
+    print("My name is \(yourName)")
+} else {
+    print("No name")
+}
 
 - Method three: Nil coalescing
-
-
+var userName: String?
+var person = String(userName ?? "No Name")
+print(person)
+```
 ## Question 2
 
 Given optional string `backgroundColor`, write code that safely unwraps and prints it. If backgroundColor is nil, give it a value.
 
 `var backgroundColor: String?`
 
-
+```
+swift
+var backgroundColor: String?
+var mainColor = String(backgroundColor ?? "white")
+print("The background color is \(mainColor)")
+```
 ## Question 3
 
 Given an optional width and an optional height of a rectangle, write code that calculates and prints the area. Print an error message if either value is nil.
@@ -30,6 +46,11 @@ Given an optional width and an optional height of a rectangle, write code that c
 ```swift
 var width: Double?
 var height: Double?
+
+if let validWidth = width, let validHeight = height  {
+    print(validWidth * validHeight)
+} else {
+    print("error value is nil")
 ```
 
 
@@ -41,6 +62,17 @@ Given the following optional variables `name`, `age` and `height`. Write code so
 var name: String?
 var age: Int?
 var height: Double?
+
+var name: String?
+var age: Int?
+var height: Double?
+
+if let person = name, let yourAge = age, let yourHeight = height {
+    print("My name is \(name)")
+    print("I am \(age) years old")
+    print("I am \(height) feet tall")
+} else {
+    print("Error, lacking input")
 ```
 
 
